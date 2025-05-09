@@ -11,6 +11,10 @@
 // Llamar a la conexión una vez
 require_once "connection.php";  // <--
 
+$array_fondo_claro = [  // colores que vamos a querer con letras negras, (por defecto letrasblanco abajo $color)
+    "white","yellow","pink","darksalmon","orange"
+];
+
 // 1.Definir la sentencia (query)
 $select = "SELECT * FROM colores;";
 
@@ -20,7 +24,7 @@ $select_pre = $conn->prepare($select);
 // 3. Ejecución
 $select_pre -> execute(); 
 
-// 4. Obtención valores (Solo en el caso del select)
+// 4. Obtención valores (SOLO en el caso del select)
 $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto de datos (mas de una fila) -> fetchAll
                                         //  tengo un array para todo y un arary associativo para cada fila, 
                                         //  fetch devuelve solo un array asociativo, para una sola fila
@@ -47,8 +51,12 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
         <section>
             <h2>Nuestros usuarios</h2>
             <?php foreach($array_filas as $fila): ?>    <!--Este codigo se va a repetir tantas veces como elementos haya en la array -->
-            
-                <div style="background-color: <?= $fila['color_en'] ?> ;">
+            <?php $color = "white";
+                if(in_array($fila['color_en'], $array_fondo_claro)){   //in_array(cosa que estamos buscando, array dónde la estamos buscando); devuelve true si lo encuentra
+                $color="black";
+                }
+            ?>
+                <div style="background-color: <?= $fila['color_en'] ?> ;color:<?= $color ?>">
                     <p> <?= $fila["usuario"] ?> </p>    <!-- = <-> php echo -->
                 </div>
 
@@ -58,6 +66,22 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
         <section>
             <h2>Indica tus datos</h2>
 
+            <form action="insert.php" method="post">
+                <fieldset>
+                    <div>
+                        <label for="usuario">Nombre del usuario:</label>
+                        <input type="text" id="usuario" name="usuario">
+                    </div>
+                    <div>
+                    <label for="color">Nombre del color:</label>
+                    <input type="text" id="color" name="color">
+                    </div>
+                    <div>
+                        <button type="submit">Enviar datos</button>
+                        <button type="reset">Limpiar formulario</button>
+                    </div>
+                </fieldset>
+            </form>
             <!-- <h2>Modifica tus datos</h2> -->
         </section>
     </main>

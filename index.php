@@ -43,6 +43,7 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -58,6 +59,10 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
             ?>
                 <div style="background-color: <?= $fila['color_en'] ?> ;color:<?= $color ?>">
                     <p> <?= $fila["usuario"] ?> </p>    <!-- = <-> php echo -->
+                    <span>
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </span>
                 </div>
 
             <?php endforeach ?>

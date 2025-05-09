@@ -59,9 +59,14 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
             ?>
                 <div style="background-color: <?= $fila['color_en'] ?> ;color:<?= $color ?>">
                     <p> <?= $fila["usuario"] ?> </p>    <!-- = <-> php echo -->
-                    <span>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <i class="fa-solid fa-trash-can"></i>
+                    <span class="icons">
+                        <a href="index.php?id=<?=$fila["id_color"]?>&usuario=<?=$fila["usuario"]?>&color=<?=$fila["color_es"]?>">  <!-- esto crea un evento GET-->
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a href="delete.php?id=<?=$fila["id_color"]?>">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                        
                     </span>
                 </div>
 
@@ -69,8 +74,27 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
 
         </section>
         <section>
-            <h2>Indica tus datos</h2>
+            <?php if(($_GET)) : // si existe es que se ha producido el click y el evento get?>  
+            <h2>Modifica tus datos</h2>
+            <form action="update.php" method="post">
+                <fieldset>
+                    <div>
+                        <label for="usuario">Nombre del usuario:</label>
+                        <input type="text" id="usuario" name="usuario" value="<?= $_GET['usuario'] ?>"> <!-- Para que cuando le demos al boton ponga el nombre de usuario auto -->
+                    </div>
+                    <div>
+                    <label for="color">Nombre del color:</label>
+                    <input type="text" id="color" name="color" value="<?= $_GET['color'] ?>">   <!--Estos nombres son los del link -->
+                    </div>
+                    <div>
+                        <button type="submit">Enviar datos</button>
+                        <a href="index.php">Cancelar</a>
+                    </div>
+                </fieldset>
+            </form>
 
+            <?php else : ?> 
+            <h2>Inserta tus datos</h2>
             <form action="insert.php" method="post">
                 <fieldset>
                     <div>
@@ -87,7 +111,7 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
                     </div>
                 </fieldset>
             </form>
-            <!-- <h2>Modifica tus datos</h2> -->
+            <?php endif ?>
         </section>
     </main>
 </body>

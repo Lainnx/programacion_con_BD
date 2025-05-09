@@ -47,6 +47,7 @@ fieldset{
     button[type="reset"]{
         background-color: darksalmon;
     }
+    
 }
 
 label{
@@ -57,4 +58,10 @@ input{
     padding: .5rem 1rem;
     width: 100%;
 
+}
+.icons{
+    a{
+        color: inherit;
+        text-decoration: none;
+    }
 }

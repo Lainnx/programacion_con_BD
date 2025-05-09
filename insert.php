@@ -40,5 +40,8 @@ $insert_pre = $conn->prepare($insert);
 // 3. Ejecución -   en el execute indicamos que pasaremos un array e indicamos para que es cada interrogante [?,?,?]
 $insert_pre -> execute([$usuario, $color_es, $array_colores_es_en[$color_es]]); 
 
+$insert_pre = null; // para resetear, para que no se vayan acumulando
+$conn = null;
+
 //volver a casa
 header("location:index.php");   // para que vuelva a index.php despues de operar en insert.php

@@ -4,7 +4,6 @@
 $host = "localhost";
 $host = "127.0.0.1";
 $database = "colores";
-$database="biblioteca";
 $port = 3307;
 $user = "root";
 $password = "root";
@@ -14,11 +13,11 @@ try{
     $conn = new PDO ("mysql:host=$host;port=$port;dbname=$database;",$user, $password);
     // echo "Conectados!!";
 
-    foreach($conn -> query("SELECT * FROM usuarios") as $fila){
-        echo "<pre>";
-        print_r($fila);   // para mostrar un array, tambien con vardump
-        echo "</pre>";
-    }
+    // foreach($conn -> query("SELECT * FROM usuarios") as $fila){
+    //     echo "<pre>";
+    //     print_r($fila);   // para mostrar un array, tambien con vardump
+    //     echo "</pre>";
+    // }
 
 
 } catch (PDOException $e){

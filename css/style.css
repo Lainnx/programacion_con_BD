@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    text-align: center;
+    margin: 1rem;
+}
+main{
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+section > div{
+    margin: .5rem 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: .5rem 1rem; /*vertical horizontal*/
+    
+}

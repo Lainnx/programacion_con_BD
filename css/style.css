@@ -65,3 +65,9 @@ input{
         text-decoration: none;
     }
 }
+#errorUsuario, #errorColor{
+    border: none;
+    margin-top: .2rem 0 0;
+    color:red;
+    font-size: .75rem;
+}

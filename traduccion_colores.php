@@ -8,5 +8,6 @@ $array_colores_es_en = [
     "negro"=>"black",
     "darksalmon"=>"darksalmon",
     "blanco"=>"white",
-    "rosa"=>"pink"
+    "rosa"=>"pink",
+    "naranja"=>"orange"
 ];

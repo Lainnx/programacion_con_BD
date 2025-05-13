@@ -60,11 +60,11 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
                 <div style="background-color: <?= $fila['color_en'] ?> ;color:<?= $color ?>">
                     <p> <?= $fila["usuario"] ?> </p>    <!-- = <-> php echo -->
                     <span class="icons">
-                        <a href="index.php?id=<?=$fila["id_color"]?>&usuario=<?=$fila["usuario"]?>&color=<?=$fila["color_es"]?>">  <!-- esto crea un evento GET-->
+                        <a href="index.php?id=<?=$fila["id_color"]?>&usuario=<?=$fila["usuario"]?>&color=<?=$fila["color_es"]?>" title="Modificar valor">  <!-- esto crea un evento GET-->
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         <a href="delete.php?id=<?=$fila["id_color"]?>">
-                            <i class="fa-solid fa-trash-can"></i>
+                            <i class="fa-solid fa-trash-can" title="Eliminar elemento"></i> <!-- title para que al pasar el cursos por encima dé info -->
                         </a>
                         
                     </span>
@@ -77,6 +77,10 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
             <?php if(($_GET)) : // si existe es que se ha producido el click y el evento get?>  
             <h2>Modifica tus datos</h2>
             <form action="update.php" method="post">
+
+                <input type="hidden" name="id_color" value="<?=$_GET['id']?>">   <!--input invisible para obtener id_color y poder modificar en la tabla
+                                                                                    id pq nombre link id=<?=$fila["id_color"]?>-->
+
                 <fieldset>
                     <div>
                         <label for="usuario">Nombre del usuario:</label>

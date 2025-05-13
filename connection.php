@@ -5,8 +5,8 @@ $host = "localhost";
 $host = "127.0.0.1";
 $database = "colores";
 $port = 3307;
-$user = "root";
-$password = "root";
+$user = "colores";
+$password = "colores";
 
 
 try{

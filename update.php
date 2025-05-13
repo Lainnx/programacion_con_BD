@@ -1,14 +1,22 @@
 <?php
 
 require_once "connection.php";
+require_once "traduccion_colores.php"; //para tener la traduccion de los colores y poder darle valor a $color_en
 
-$update = "UPDATE colores SET ;";    // ? para el numero de valores que esperamos
+print_r($_POST); // para ver que llega con el POST
+$usuario = $_POST['usuario'];
+$color_es = strtolower($_POST['color']);    // cuando se envia el color tiene este nombre
+$color_en = $array_colores_es_en[$color_es] ?? $color_es; // array asociativo, si le pasamos color_es (atributo), nos dara color_en (valor)
+                // mira si tienes el color en traduccion, si no lo tienes pon directamente el color del formulario
+$id_color = $_POST['id_color'];
+
+$update = "UPDATE colores SET usuario = ?, color_es = ?, color_en = ? WHERE id_color = ? ;";    // ? 
 
 // 2. Preparación
 $update_pre = $conn->prepare($update);
 
 // 3. Ejecución -   en el execute indicamos que pasaremos un array e indicamos para que es cada interrogante [?,?,?]
-$update_pre -> execute([$_GET['id'],$_GET['usuario'],$_GET['color']]);  // aqui le ponemos valor al ? (sino vulnerable a inyecciones de codigo), TIENE QUE IR DENTRO DE UN ARRAY [?]
+$update_pre -> execute([$usuario, $color_es, $color_en, $id_color]);  // aqui le ponemos valor als ? (sino vulnerable a inyecciones de codigo), TIENE QUE IR DENTRO DE UN ARRAY [?]
 
 $update_pre = null; // para resetear, para que no se vayan acumulando
 $conn = null;

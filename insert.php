@@ -16,6 +16,7 @@ $usuario = $_POST["usuario"];
 
 //para convertir el color en mins i que no isgui case sensitive
 $color_es =strtolower( $_POST["color"]);
+$color_en = $array_colores_es_en[$color_es]  ?? $color_es;
 
 //traducir el color a ingles
 $encontrado = false;
@@ -38,7 +39,7 @@ $insert = "INSERT INTO colores(usuario, color_es, color_en) VALUES (?,?,?);";
 $insert_pre = $conn->prepare($insert);
 
 // 3. Ejecución -   en el execute indicamos que pasaremos un array e indicamos para que es cada interrogante [?,?,?]
-$insert_pre -> execute([$usuario, $color_es, $array_colores_es_en[$color_es]]); 
+$insert_pre -> execute([$usuario, $color_es, $color_en]); 
 
 $insert_pre = null; // para resetear, para que no se vayan acumulando
 $conn = null;

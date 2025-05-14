@@ -45,7 +45,7 @@
                         <p id="errorEmail"></p>
                     </div>
                     <div>
-                        <label for="password">Idioma</label>
+                        <label for="idioma">Idioma</label>
                         <select name="idioma" id="idioma">
                             <option value="ESP" selected>ESP</option>
                             <option value="CAT">CAT</option>

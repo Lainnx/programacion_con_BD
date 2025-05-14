@@ -20,7 +20,7 @@ $_SESSION['token'] = bin2hex(random_bytes(64)); // el token existe solo aqui de 
 
 
 // Llamar a la conexión una vez
-require_once "connection.php";  // <--
+require_once "controlador/connection.php";  // <--
 
 $array_fondo_claro = [  // colores que vamos a querer con letras negras, (por defecto letrasblanco abajo $color)
     "white","yellow","pink","darksalmon","orange"
@@ -51,14 +51,13 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include_once "modulos/meta.php"; ?>
     <title>Colores</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header><h1>Nuestros colores preferidos</h1></header>
+    <?php include_once "modulos/header.php" ?>
     <main>
         <section>
             <h2>Nuestros amigos</h2>
@@ -84,10 +83,10 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
             <?php endforeach ?>
 
         </section>
-        <section>
+        <section >
             <?php if(($_GET)) : // si existe es que se ha producido el click y el evento get?>  
             <h2>Modifica tus datos</h2>
-            <form action="update.php" method="post">
+            <form action="update.php" method="post" class="formColores">
 
                 <input type="hidden" name="id_color" value="<?=$_GET['id']?>">   <!--input invisible para obtener id_color y poder modificar en la tabla
                                                                                     id pq nombre link id=<?=$fila["id_color"]?>-->
@@ -115,7 +114,7 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
             <h2>Inserta tus datos</h2>
             <!-- linea comentada para que los datos no vayan directamente a insert.php -->
             <!-- <form action="insert.php" method="post"> -->
-            <form name="formInsert">
+            <form name="formInsert" class="formColores">
 
                 <input type="hidden" name="token" value=<?= $_SESSION['token'] ?>>
                 <input type="text" name="nombre_que_no_se_corresponde_con_lo_que_hace" style="display:none">    <!--para honeypot de bots -->

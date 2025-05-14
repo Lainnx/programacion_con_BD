@@ -59,15 +59,15 @@ h1{
     }
 }
 
-#errorUsuario, #errorPassword, #errorEmail{
+#errorUsuario, #errorColor, #errorEmail, #errorPassword{
     border: none;
     margin-top: .2rem 0 0;
     color:red;
     font-size: .75rem;
-}
+} 
 
 
-/*
+
 main{
     max-width: 1000px;
     margin: 0 auto;
@@ -80,19 +80,21 @@ section > div{
     margin: .5rem 0;
     border: 1px solid black;
     border-radius: 5px;
-    padding: .5rem 1rem; // vertical horizontal
+    padding: .5rem 1rem;  /*vertical horizontal*/
     display: flex;
     justify-content: space-between;
     
 }
-fieldset{
+
+.formColores{
+    fieldset{
     padding: 1rem;
     margin-top: .5rem;
 
     div{
         margin-bottom: 1rem;
     }
-    div:last-child{      // el ultimo div siempre contendrá los botones
+    div:last-child{       /*el ultimo div siempre contendrá los botones*/
         display: flex;
         justify-content: space-between;
     }
@@ -106,7 +108,9 @@ fieldset{
         background-color: darksalmon;
     }
     
+    }
 }
+
 
 label{
     display: block;
@@ -123,10 +127,3 @@ input{
         text-decoration: none;
     }
 }
-#errorUsuario, #errorColor{
-    border: none;
-    margin-top: .2rem 0 0;
-    color:red;
-    font-size: .75rem;
-}
-*/

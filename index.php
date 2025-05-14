@@ -61,7 +61,7 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
     <header><h1>Nuestros colores preferidos</h1></header>
     <main>
         <section>
-            <h2>Nuestros usuarios</h2>
+            <h2>Nuestros amigos</h2>
             <?php foreach($array_filas as $fila): ?>    <!--Este codigo se va a repetir tantas veces como elementos haya en la array -->
             <?php $color = "white";
                 if(in_array($fila['color_en'], $array_fondo_claro)){   //in_array(cosa que estamos buscando, array dónde la estamos buscando); devuelve true si lo encuentra

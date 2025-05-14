@@ -51,7 +51,7 @@
                     </div>
                     <div>
                         <button type="submit">Crear cuenta</button>
-                        <button type="reset">Borrar formulario</button>
+                        <a href="acceso.php">Acceder</a>
                     </div>
                 </fieldset>
 

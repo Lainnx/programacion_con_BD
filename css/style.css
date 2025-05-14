@@ -21,15 +21,50 @@ h1{
 }
 
 .main-crear-usuario{
+    max-width: 1000px;
+    margin: 2rem auto;
+    
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 2rem;
 
     img{
         width: 100%;
     }
+    fieldset{
+        padding: 1.5rem;
+
+        label{
+            display: block;
+        }
+        input, select{
+            width: 100%;
+            padding: .5rem 1rem;
+        }
+        div{
+            margin: .5rem 0;
+        }
+        div:last-child{
+            margin: 1rem 0;
+            text-align: center;
+        }
+        button{
+            background-color: steelblue;
+            border: none;
+            border-radius: 5px;
+            padding:.5rem 1rem;
+            width: 100%;
+            margin:1rem 0;
+        }
+    }
 }
 
-
+#errorUsuario, #errorPassword, #errorEmail{
+    border: none;
+    margin-top: .2rem 0 0;
+    color:red;
+    font-size: .75rem;
+}
 
 
 /*

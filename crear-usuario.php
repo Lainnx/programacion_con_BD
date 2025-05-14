@@ -7,6 +7,7 @@
 <head>
     <?php include_once "modulos/meta.php"; ?>
     <title>Crear cuenta</title>
+    <script src="js/crear-usuario.js" defer></script>
 </head>
 <body>
     <?php include_once "modulos/header.php" ?>
@@ -16,29 +17,31 @@
             <img src="img/colores.jpg" alt="espiral de colores">
         </section>
         <section>
+
             <form name="formNewUser">
                 <fieldset>
+                    <h2>Introduce tus datos</h2>
                     <div>
                         <label for="nombre">Nombre:</label>
                         <!-- Acuerdate de poner el required -->
-                        <input type="text" name="nombre" id="nombre">
+                        <input type="text" name="nombre" id="nombre" >
                         <p id="errorUsuario"></p>
                     </div>
                     <div>
                         <label for="password">Contraseña:</label>
                         <!-- Acuerdate de poner el required -->
-                        <input type="password" name="password" id="password">
+                        <input type="password" name="password" id="password" maxlength="12">
                     </div>
                     <div>
                         <label for="password2">Repite la contraseña:</label>
                         <!-- Acuerdate de poner el required -->
-                        <input type="password2" name="password2" id="password2">
+                        <input type="password" name="password2" id="password2" maxlength="12">
                         <p id="errorPassword"></p>
                     </div>
                     <div>
                         <label for="email">Email:</label>
                         <!-- Acuerdate de poner el required -->
-                        <input type="email" name="email" id="email">
+                        <input type="email" name="email" id="email" maxlength="150">
                         <p id="errorEmail"></p>
                     </div>
                     <div>
@@ -51,12 +54,14 @@
                     </div>
                     <div>
                         <button type="submit">Crear cuenta</button>
-                        <a href="acceso.php">Acceder</a>
+                        <a href="iniciar-sesion.php">Ya tengo una cuenta</a>
                     </div>
                 </fieldset>
 
             </form>
         </section>
     </main>
+
+
 </body>
 </html>

@@ -12,12 +12,18 @@ error_reporting(0); // para anular los warnings, ahora cuando $_SESSION['error']
 // include_once "connection.php";  // vigila si se ha llamado al fichero antes y no lo vuelve a llamar, si ya hay una conexion establecida y otro fichero requere esa conexion
                                 // el once haría que no se conectara más de una vez 
 
+
 //SESIONES EN PHP
 session_start(); // implica la creacion de $_SESSION (array asociativo vacío), donde se encuentre un session_start puedes pasar datos de un fichero a otro
 $_SESSION['token'] = bin2hex(random_bytes(64)); // el token existe solo aqui de momento, lo vamos a enviar con el formulario, cuando lo recibamos en el otro fichero nos
                                                 // vamos a asegurar que lo que recibimos es el mismo valor que este, miraremos si los valores coinciden
 
 // echo $_SESSION["id_usuario"] ."<br>";
+
+if(!isset($_SESSION["id_usuario"])){       // para que no entre al resto de la web directamente por enlaces, si $_SESSION no existe redirige a index.php
+    header("location:index.php");
+}
+
 
 // Llamar a la conexión una vez
 require_once "controlador/connection.php";  // <--

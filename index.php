@@ -11,14 +11,18 @@ $_SESSION['token'] = bin2hex(random_bytes(64)); // el token existe solo aqui de 
 // Llamar a la conexión una vez
 require_once "controlador/connection.php";  // <-- controlador carpeta con ficheros con logica
 
+$idiomasJSON = "idiomas.json";
+$file = file_get_contents($idiomasJSON);
+$idiomas = json_decode($file, true);    // true para que lo convierta en array asociativa
+$idioma = $_SESSION["idioma"] ?? "ESP";
 
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<?= $idiomas[$idioma]["lang"]?>">   <!-- IdiomaS es el JSON, luego la variable idioma(el seleccionado), luego el campo y obtienes el valor de la variable-->
 <head>
     <?php include_once "modulos/meta.php"; ?>
-    <title>Colores</title>
+    <title><?= $idiomas[$idioma]["title"]?></title>
     
 </head>
 <body>

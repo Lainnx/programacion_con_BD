@@ -75,3 +75,27 @@ formInsert.addEventListener("submit",(e)=>{
         console.log("Error: ", error);
     })
 });
+
+//CERRAR SESIÓN POR INACTIVIDAD
+
+const tiempoInactividad = 300000; //ms
+
+let temporizador;
+
+function redirigir(){
+    window.location.href = "../controlador/logout.php";
+}
+
+function resetearTemporizador(){
+    clearTimeout(temporizador);
+    temporizador = setTimeout(redirigir, tiempoInactividad);   // cuando una funcion llama a otra no hace falta poner el () !!!
+}
+
+window.addEventListener("keydown", resetearTemporizador);
+window.addEventListener("mousemove", resetearTemporizador);
+window.addEventListener("click", resetearTemporizador);
+window.addEventListener("scroll", resetearTemporizador);
+window.addEventListener("touchstart", resetearTemporizador);  // listeners para cada evento posible, cuando el usuario haga algo se resetea el temporizador
+
+// el temporizador tiene que empezar a contar cuando se carga la pagina
+resetearTemporizador();

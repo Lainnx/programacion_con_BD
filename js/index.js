@@ -1,4 +1,4 @@
-//capturar el objeto formulario
+// LOGIN
 
 const formLogin= document.forms["formLogin"]   // array associatvo donde la clave es el name
 
@@ -49,8 +49,14 @@ formLogin.addEventListener("submit",(event)=>{
     }).then(respuesta => respuesta.text())
     .then(data => {
         console.log(data);
+
+        if(data == "UsuarioInexistente" || data == "PasswordIncorrecto"){
+            document.getElementById("errorPassword").textContent = "Usuario o contraseña incorrectos";
+            // window.location.href="index.php?formulario=login"; // no necesitamos otro location porque se tiene que quedar en la misma página
+            return;
+        }
         //location.reload(); // para recargar la pagina y se sincronize con BD en servidor
-        window.location.href="../colores.php";
+        window.location.href="../colores.php";  // aqui solo llegará cuando el usuario exista
     }).catch(error => {
         console.log("Error: ", error);
     })

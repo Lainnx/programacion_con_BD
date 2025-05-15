@@ -19,8 +19,7 @@ header{
 h1{
     text-align: center;
 }
-
-.main-crear-usuario{
+main{
     max-width: 1000px;
     margin: 2rem auto;
     
@@ -30,7 +29,10 @@ h1{
 
     img{
         width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
+
     fieldset{
         padding: 1.5rem;
 
@@ -68,13 +70,6 @@ h1{
 
 
 
-main{
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
 
 section > div{
     margin: .5rem 0;

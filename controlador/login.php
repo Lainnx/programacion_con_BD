@@ -1,5 +1,7 @@
 <?php
 
+session_start(); //sin el session start no se pueden crear variables de sesion
+
 require_once "connection.php";
 
 $verificarNombre = isset($_POST["nombre"]) && $_POST["nombre"];
@@ -43,5 +45,7 @@ if (!password_verify($password, $usuarioExistente["password_usuario"])){    //de
     die();
 }
 
-echo "Usuario identificado";
+$_SESSION["id_usuario"] = $usuarioExistente["id_usuario"];    //variable de sesion
+
+// echo "Usuario identificado";
 

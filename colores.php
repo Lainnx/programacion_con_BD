@@ -27,13 +27,13 @@ $array_fondo_claro = [  // colores que vamos a querer con letras negras, (por de
 ];
 
 // 1.Definir la sentencia (query)
-$select = "SELECT * FROM colores;";
+$select = "SELECT * FROM colores WHERE id_usuario = ?;";
 
 // 2. Preparación
 $select_pre = $conn->prepare($select);
 
 // 3. Ejecución
-$select_pre -> execute(); 
+$select_pre -> execute(array($_SESSION["id_usuario"])); //para que sepa que usuario entra y muestre solo lo suyo
 
 // 4. Obtención valores (SOLO en el caso del select)
 $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto de datos (mas de una fila) -> fetchAll

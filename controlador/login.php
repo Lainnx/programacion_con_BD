@@ -44,7 +44,7 @@ if (!password_verify($password, $usuarioExistente["password_usuario"])){    //de
     echo "PasswordIncorrecto";
     die();
 }
-
+$_SESSION["nombre_usuario"] = $usuarioExistente["nombre_usuario"];
 $_SESSION["id_usuario"] = $usuarioExistente["id_usuario"];    //variable de sesion
 
 // echo "Usuario identificado";

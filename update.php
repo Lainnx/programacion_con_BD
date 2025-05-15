@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once "connection.php";
+require_once "controlador/connection.php";
 require_once "traduccion_colores.php"; //para tener la traduccion de los colores y poder darle valor a $color_en
 
 
@@ -42,4 +42,4 @@ $update_pre = null; // para resetear, para que no se vayan acumulando
 $conn = null;
 
 //volver a casa
-header("location:index.php");
+header("location:colores.php");

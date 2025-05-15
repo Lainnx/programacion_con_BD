@@ -17,13 +17,13 @@ session_start(); // implica la creacion de $_SESSION (array asociativo vacío), 
 $_SESSION['token'] = bin2hex(random_bytes(64)); // el token existe solo aqui de momento, lo vamos a enviar con el formulario, cuando lo recibamos en el otro fichero nos
                                                 // vamos a asegurar que lo que recibimos es el mismo valor que este, miraremos si los valores coinciden
 
-
+// echo $_SESSION["id_usuario"] ."<br>";
 
 // Llamar a la conexión una vez
 require_once "controlador/connection.php";  // <--
 
 $array_fondo_claro = [  // colores que vamos a querer con letras negras, (por defecto letrasblanco abajo $color)
-    "white","yellow","pink","darksalmon","orange"
+    "white","yellow","pink","darksalmon","orange","aqua"
 ];
 
 // 1.Definir la sentencia (query)
@@ -70,7 +70,7 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
                 <div style="background-color: <?= $fila['color_en'] ?> ;color:<?= $color ?>">
                     <p> <?= htmlspecialchars($fila["usuario"], ENT_QUOTES, "UTF-8" )?> </p>    <!-- = <-> php echo -->
                     <span class="icons">
-                        <a href="index.php?id=<?=$fila["id_color"]?>&usuario=<?=$fila["usuario"]?>&color=<?=$fila["color_es"]?>" title="Modificar valor">  <!-- esto crea un evento GET-->
+                        <a href="colores.php?id=<?=$fila["id_color"]?>&usuario=<?=$fila["usuario"]?>&color=<?=$fila["color_es"]?>" title="Modificar valor">  <!-- esto crea un evento GET-->
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         <a href="delete.php?id=<?=$fila["id_color"]?>">
@@ -89,7 +89,7 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
             <form action="update.php" method="post" class="formColores">
 
                 <input type="hidden" name="id_color" value="<?=$_GET['id']?>">   <!--input invisible para obtener id_color y poder modificar en la tabla
-                                                                                    id pq nombre link id=<?=$fila["id_color"]?>-->
+                                                                                    id pq nombre link id=<?=$fila["id_color"]?> -->
                 <input type="hidden" name="token" value=<?= $_SESSION['token'] ?>>
                 <input type="text" name="nombre_que_no_se_corresponde_con_lo_que_hace" style="display:none">
 
@@ -105,7 +105,7 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
                     </div>
                     <div>
                         <button type="submit">Enviar datos</button>
-                        <a href="index.php">Cancelar</a>
+                        <button type="reset">Borrar formulario</button>
                     </div>
                 </fieldset>
             </form>
@@ -115,6 +115,8 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
             <!-- linea comentada para que los datos no vayan directamente a insert.php -->
             <!-- <form action="insert.php" method="post"> -->
             <form name="formInsert" class="formColores">
+
+                <input type="hidden" name="id_usuario" value=<?= $_SESSION['id_usuario'] ?>>
 
                 <input type="hidden" name="token" value=<?= $_SESSION['token'] ?>>
                 <input type="text" name="nombre_que_no_se_corresponde_con_lo_que_hace" style="display:none">    <!--para honeypot de bots -->

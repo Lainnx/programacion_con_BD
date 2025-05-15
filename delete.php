@@ -1,7 +1,7 @@
 <?php
 
 
-require_once "connection.php";
+require_once "controlador/connection.php";
 // 1.Definir la sentencia preparada, ponemos ? y PDO sabe que espera 3 valores, para evitar inyecciones de codigo
 
 // $id = $_GET['id'];           //ASÍ NO, MALA SEGURIDAD
@@ -19,4 +19,4 @@ $delete_pre = null; // para resetear, para que no se vayan acumulando
 $conn = null;
 
 //volver a casa
-header("location:index.php");
+header("location:colores.php");

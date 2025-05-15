@@ -8,16 +8,38 @@ header{
     background-color: #444;
     padding: 1rem 0;
 
-    div{
+    >div{
         max-width: 1000px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         color: white;
+        font-size: 1.2rem;
+
+        div{
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            gap: 2rem;
+
+            button {
+                background-color: transparent;
+                border: 1px solid white;
+                color: white;
+                padding: .2rem;
+                cursor: crosshair;
+
+                &:hover{
+                    background-color: white;
+                    color: red;
+                }
+            }
+        }
     }
 }
 h1{
-    text-align: center;
+    text-align: left;
 }
 main{
     max-width: 1000px;

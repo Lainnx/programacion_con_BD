@@ -2,7 +2,7 @@
 
 session_start();    // cuando tenemos la sesion abierta es cuando viaja el $_SESSION con el token
 
-require_once "connection.php";   // por defecto los datos de un fichero no pasan a otro, hay que llamar a la conexión otra vez
+require_once "controlador/connection.php";   // por defecto los datos de un fichero no pasan a otro, hay que llamar a la conexión otra vez
 
 // $_POST   cuando se envia un formulario por method="post" se crea esta super variable global, aqui estan los datos, solo afecta a las paginas directamente enlazadas
 // $_GET    method="get" así se ven los datos en la url
@@ -11,6 +11,9 @@ require_once "connection.php";   // por defecto los datos de un fichero no pasan
 // echo "<pre>";
 // print_r($_POST);
 // echo "</pre>";
+
+// print_r($_POST);
+
 
 require_once "traduccion_colores.php"; // para pasar la traduccion al execute()
 
@@ -59,16 +62,18 @@ if(!$encontrado){
 
 
 // 1.Definir la sentencia preparada, ponemos ? y PDO sabe que espera 3 valores, para evitar inyecciones de codigo
-$insert = "INSERT INTO colores(usuario, color_es, color_en) VALUES (?,?,?);";
+$insert = "INSERT INTO colores(usuario, color_es, color_en, id_usuario) VALUES (?,?,?,?);";
 
 // 2. Preparación
 $insert_pre = $conn->prepare($insert);
 
 // 3. Ejecución -   en el execute indicamos que pasaremos un array e indicamos para que es cada interrogante [?,?,?]
-$insert_pre -> execute([$usuario, $color_es, $color_en]); 
+$insert_pre -> execute([$usuario, $color_es, $color_en, $_POST["id_usuario"]]); 
 
 $insert_pre = null; // para resetear, para que no se vayan acumulando
 $conn = null;
+
+echo "Preferencias grabadas";
 
 //volver a casa
 header("location:index.php");   // para que vuelva a index.php despues de operar en insert.php

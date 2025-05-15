@@ -60,6 +60,9 @@ $prep -> bindParam(":idioma",$_POST["idioma"], PDO::PARAM_STR);
 // 4. Ejecución -  
 $prep -> execute(); //ya no hay que indicarle nada
 
+$_SESSION["id_usuario"] = $conn->lastInsertId();
+// echo "acceso.php" .$_SESSION["id_usuario"] ."<br>";
+
 $prep = null; // para resetear, para que no se vayan acumulando
 $conn = null;
 

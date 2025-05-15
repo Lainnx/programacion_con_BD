@@ -11,6 +11,8 @@ formInsert.addEventListener("submit",(e)=>{
     const color = formInsert["color"].value.trim().toLocaleLowerCase();
     const nombre_que_no_se_corresponde_con_lo_que_hace = formInsert["nombre_que_no_se_corresponde_con_lo_que_hace"].value;
     const token = formInsert["token"].value;
+    const id_usuario = formInsert["id_usuario"].value;
+
 
 
     let mensajeError = "Contenido requerido";
@@ -57,6 +59,7 @@ formInsert.addEventListener("submit",(e)=>{
     datos.append("color",color);
     datos.append("nombre_que_no_se_corresponde_con_lo_que_hace",nombre_que_no_se_corresponde_con_lo_que_hace);
     datos.append("token",token);
+    datos.append("id_usuario",id_usuario);
 
     fetch("../insert.php",{     // fetch tambien puede enviar datos, ../ porque esta en carpeta js
         "method":"POST",        // estos nombres no te los puedes inventar, son los que son

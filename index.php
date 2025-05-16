@@ -7,6 +7,15 @@ $_SESSION['token'] = bin2hex(random_bytes(64)); // el token existe solo aqui de 
                                                 // vamos a asegurar que lo que recibimos es el mismo valor que este, miraremos si los valores coinciden
 
 
+$num_random = random_int(0,3);  
+//array asociativo
+$imagenes = [
+    ["src"=>"colores1.jpg", "alt"=>"Muchos colores"],
+    ["src"=>"colores2.jpg", "alt"=>"Bastantes colores"],
+    ["src"=>"colores3.jpg", "alt"=>"Espectro colores"],
+    ["src"=>"lapices.jpg", "alt"=>"Lapices de colores"]
+];
+
 
 // Llamar a la conexión una vez
 require_once "controlador/connection.php";  // <-- controlador carpeta con ficheros con logica
@@ -29,7 +38,9 @@ $idioma = $_SESSION["idioma"] ?? "ESP";
     <?php include_once "modulos/header.php" ?>
     <main class="main-index">
         <section>
-            <img src="img/colores.jpg" alt="Espiral de colores">
+            
+            <img src="img/<?=$imagenes[$num_random]['src']?>" alt="<?=$imagenes[$num_random]['alt']?>">
+            
         </section>
         <section>
         <?php

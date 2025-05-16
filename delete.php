@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+if($_GET){    // get no existe a no ser que se intente poner por la url (ahora va todo por POST)
+    header("location:controlador/logout.php");
+    exit();
+}
 
 require_once "controlador/connection.php";
 // 1.Definir la sentencia preparada, ponemos ? y PDO sabe que espera 3 valores, para evitar inyecciones de codigo
@@ -13,7 +19,7 @@ $delete = "DELETE FROM colores WHERE id_color = ?;";    // ? para el numero de v
 $delete_pre = $conn->prepare($delete);
 
 // 3. Ejecución -   en el execute indicamos que pasaremos un array e indicamos para que es cada interrogante [?,?,?]
-$delete_pre -> execute([$_GET['id']]);  // aqui le ponemos valor al ? (sino vulnerable a inyecciones de codigo), TIENE QUE IR DENTRO DE UN ARRAY [?]
+$delete_pre -> execute([$_POST['quitar']]);  // aqui le ponemos valor al ? (sino vulnerable a inyecciones de codigo), TIENE QUE IR DENTRO DE UN ARRAY [?]
 
 $delete_pre = null; // para resetear, para que no se vayan acumulando
 $conn = null;

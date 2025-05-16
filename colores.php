@@ -79,9 +79,15 @@ $array_filas = $select_pre->fetchAll(); //  cuando se quiera obtener un conjunto
                         <a href="colores.php?id=<?=$fila["id_color"]?>&usuario=<?=$fila["usuario"]?>&color=<?=$fila["color_es"]?>" title="Modificar valor">  <!-- esto crea un evento GET-->
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
-                        <a href="delete.php?id=<?=$fila["id_color"]?>">
-                            <i class="fa-solid fa-trash-can" title="Eliminar elemento"></i> <!-- title para que al pasar el cursos por encima dé info -->
-                        </a>
+                        <form action="delete.php" method="POST">
+                            <input type="hidden" name="quitar" id="quitar" value="<?=$fila["id_color"]?>">
+                            <button>
+                                <i class="fa-solid fa-trash-can" title="Eliminar elemento"></i>
+                            </button>
+                        </form>
+                        <!-- <a href="delete.php?id=<?=$fila["id_color"]?>"> -->
+                             <!-- title para que al pasar el cursos por encima dé info -->
+                        <!-- </a> -->
                         
                     </span>
                 </div>

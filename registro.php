@@ -17,7 +17,7 @@ $select_pre = $conn->prepare($select);
 $select_pre -> execute(array($token_url)); //para que sepa que usuario entra y muestre solo lo suyo
 
 // 4. Obtención valores (SOLO en el caso del select)
-$array_filas = $select_pre->fetchAll();
+$array_filas = $select_pre->fetch();
 
 if(!$array_filas){  // si array_filas viene vacío es que el token no es el mismo que el de la BD, entonces paramos
     header("location:index.php");

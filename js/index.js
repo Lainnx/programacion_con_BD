@@ -138,3 +138,18 @@ formNewUser.addEventListener("submit",(event)=>{
     })
     })
 }
+
+// 
+const formReset= document.forms["formReset"] || "No";
+
+if(formReset != "No"){
+    formReset.addEventListener("submit",(e)=>{
+        e.preventDefault();
+        // alert("Reset");
+
+        email_reset = document.getElementById("usuario").value;
+        // alert(email_reset);
+        
+
+    })
+}

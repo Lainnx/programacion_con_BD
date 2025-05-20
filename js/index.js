@@ -132,7 +132,7 @@ formNewUser.addEventListener("submit",(event)=>{
     .then(data => {
         console.log(data);
         // location.reload(); // para recargar la pagina y se sincronize con BD en servidor
-        window.location.href="../colores.php";
+        window.location.href="../email.php";
     }).catch(error => {
         console.log("Error: ", error);
     })
